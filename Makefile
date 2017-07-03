@@ -2,6 +2,7 @@ DOCKER=docker
 DOCKER_COMPOSE=docker-compose
 SUDO=sudo
 CHOWN=chown
+RM=rm
 
 image:
 	${DOCKER_COMPOSE} build
