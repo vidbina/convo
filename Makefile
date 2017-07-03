@@ -14,7 +14,7 @@ shell:
 	${DOCKER_COMPOSE} run web bash
 
 server:
-	${DOCKER_COMPOSE} up web
+	${DOCKER_COMPOSE} run web
 
 prep:
 	${DOCKER_COMPOSE} run test bash -c "sleep 5 && pwd && ls -la && bundle exec rake db:migrate"
