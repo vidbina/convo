@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import TextField from 'material-ui/TextField';
 
 const HelloWorld = ({ name, updateName }) => (
   <div>
@@ -11,8 +12,10 @@ const HelloWorld = ({ name, updateName }) => (
       <label htmlFor="name">
         Say hello to:
       </label>
-      <input
+      <TextField
         id="name"
+        //defaultValue="Something useful"
+        floatingLabelText="Name"
         type="text"
         value={name}
         onChange={(e) => updateName(e.target.value)}

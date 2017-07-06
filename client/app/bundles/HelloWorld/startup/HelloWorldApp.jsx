@@ -20,7 +20,9 @@ injectTapEventPlugin();
 // knowing the locale. See the React on Rails documentation for more info on the railsContext
 const HelloWorldApp = (props, _railsContext) => (
   <Provider store={configureStore(props)}>
-    <HelloWorldContainer />
+    <MuiThemeProvider>
+      <HelloWorldContainer />
+    </MuiThemeProvider>
   </Provider>
 );
 
