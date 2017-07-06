@@ -1,32 +1,58 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from 'material-ui/TextField';
 
-const HelloWorld = ({ name, updateName }) => (
+import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
+import Dialog from 'material-ui/Dialog';
+
+const HelloWorld = ({
+  name, isVisibleLoginPrompt,
+  updateName, updatePassword,
+  showLoginPrompt, hideLoginPrompt,
+}) => (
   <div>
-    <h3>
-      Hello, {name}!
-    </h3>
-    <hr />
-    <form >
-      <label htmlFor="name">
-        Say hello to:
-      </label>
-      <TextField
-        id="name"
-        //defaultValue="Something useful"
-        floatingLabelText="Name"
-        type="text"
-        value={name}
-        onChange={(e) => updateName(e.target.value)}
-      />
-    </form>
+    <AppBar
+      title={"Title"}
+      iconClassNameRight="muidocs-icon-navigation-expand-more"
+    />
+
+    <FlatButton
+      label="Login"
+      primary={true}
+      onTouchTap={showLoginPrompt}
+    />
+
+    <Dialog
+      title="Login"
+      actions={[]}
+      modal={false}
+      open={isVisibleLoginPrompt}
+      onRequestClose={hideLoginPrompt}
+    >
+      <form>
+        <TextField
+          id="loginHandle"
+          floatingLabelText="Name"
+          type="text"
+          value={name}
+          onChange={(e) => updateName(e.target.value)}
+        />
+        <TextField
+          id="loginPassword"
+          floatingLabelText="Password"
+          type="password"
+          onChange={(e) => updatePassword(e.target.value)}
+        />
+      </form>
+    </Dialog>
   </div>
 );
 
 HelloWorld.propTypes = {
   name: PropTypes.string.isRequired,
   updateName: PropTypes.func.isRequired,
+  showLoginPrompt: PropTypes.func.isRequired,
 };
 
 export default HelloWorld;
