@@ -4,7 +4,7 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
+import { LoginForm, LoginFormDialog } from './LoginForm';
 
 const HelloWorld = ({
   name, isVisibleLoginPrompt,
@@ -23,29 +23,14 @@ const HelloWorld = ({
       onTouchTap={showLoginPrompt}
     />
 
-    <Dialog
-      title="Login"
-      actions={[]}
-      modal={false}
-      open={isVisibleLoginPrompt}
-      onRequestClose={hideLoginPrompt}
-    >
-      <form>
-        <TextField
-          id="loginHandle"
-          floatingLabelText="Name"
-          type="text"
-          value={name}
-          onChange={(e) => updateName(e.target.value)}
-        />
-        <TextField
-          id="loginPassword"
-          floatingLabelText="Password"
-          type="password"
-          onChange={(e) => updatePassword(e.target.value)}
-        />
-      </form>
-    </Dialog>
+    <LoginFormDialog
+      handle={name}
+      isVisible={isVisibleLoginPrompt}
+      onAttempt={() => console.log("LOGIN")}
+      onChangeHandle={updateName}
+      onChangeSecret={updatePassword}
+      onHide={hideLoginPrompt}
+    />
   </div>
 );
 
