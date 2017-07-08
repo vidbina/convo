@@ -31,12 +31,6 @@ const HelloWorld = ({
       onHide={hideDebugDrawer}
     />
 
-    <FlatButton
-      label="State"
-      primary={true}
-      onTouchTap={() => console.log({isVisibleLoginPrompt, isVisibleDebugDrawer})}
-    />
-
     <LoginFormDialog
       handle={name}
       isVisible={isVisibleLoginPrompt}
