@@ -16,7 +16,14 @@ const DebugDrawer = ({
     width={200}
     onRequestChange={(open, reason) => { if(open==false) { onHide() } }}
   >
-  {actions.map(({key, caption, func}) => <MenuItem key={key} onTouchTap={func}>{caption}</MenuItem>)}
+    {actions.map(({key, caption, func}) =>
+      <MenuItem
+        key={key}
+        onTouchTap={func}
+      >
+        {caption}
+      </MenuItem>)
+    }
   </Drawer>
 )
 
