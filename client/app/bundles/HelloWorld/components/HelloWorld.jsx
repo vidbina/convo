@@ -8,6 +8,7 @@ import { LoginForm, LoginFormDialog } from './LoginForm';
 import { DebugDrawer } from './Drawer';
 
 const HelloWorld = ({
+  debug,
   name,
   isVisibleDebugDrawer,
   isVisibleLoginPrompt,
@@ -19,7 +20,9 @@ const HelloWorld = ({
     <AppBar
       title={"Title"}
       iconClassNameRight="muidocs-icon-navigation-expand-more"
-      onLeftIconButtonTouchTap={showDebugDrawer}
+      onLeftIconButtonTouchTap={ () => {
+        if(debug == true) { showDebugDrawer() }
+      } }
     />
 
     <DebugDrawer
@@ -45,6 +48,10 @@ const HelloWorld = ({
   </div>
 );
 
+HelloWorld.defaultProps = {
+  debug: true,
+}
+
 HelloWorld.propTypes = {
   name: PropTypes.string.isRequired,
   updateName: PropTypes.func.isRequired,
@@ -52,7 +59,7 @@ HelloWorld.propTypes = {
   showLoginPrompt: PropTypes.func.isRequired,
   hideDebugDrawer: PropTypes.func.isRequired,
   showDebugDrawer: PropTypes.func.isRequired,
-  //debug: PropTypes.bool.isRequired<
+  debug: PropTypes.bool.isRequired,
 };
 
 export default HelloWorld;
