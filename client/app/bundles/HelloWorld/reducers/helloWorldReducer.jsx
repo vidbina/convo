@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
 import { HELLO_WORLD_NAME_UPDATE, HELLO_WORLD_PASSWORD_UPDATE } from '../constants/helloWorldConstants';
-import { SHOW_LOGIN_PROMPT, HIDE_LOGIN_PROMPT } from '../constants/helloWorldConstants';
+import {
+  SHOW_LOGIN_PROMPT, HIDE_LOGIN_PROMPT,
+  SHOW_DEBUG_DRAWER, HIDE_DEBUG_DRAWER,
+} from '../constants/helloWorldConstants';
 
 const name = (state = '', action) => {
   switch (action.type) {
@@ -10,6 +13,17 @@ const name = (state = '', action) => {
       return state;
   }
 };
+
+const debugDrawerVisibility = (state = false, action) => {
+  switch (action.type) {
+    case SHOW_DEBUG_DRAWER:
+      return true;
+    case HIDE_DEBUG_DRAWER:
+      return false;
+    default:
+      return state;
+  }
+}
 
 const loginDialogVisibility = (state = false, action) => {
   switch (action.type) {
@@ -24,7 +38,8 @@ const loginDialogVisibility = (state = false, action) => {
 
 const helloWorldReducer = combineReducers({
   name,
-  loginDialogVisibility
+  debugDrawerVisibility,
+  loginDialogVisibility,
 });
 
 export default helloWorldReducer;

@@ -6,7 +6,7 @@ import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 
 const LoginForm = ({
-  handle, onChangeHandle, onChangeSecret, onAttempt
+  handle, onChangeHandle, onChangeSecret, onAttempt,
 }) => (
   <form>
     <TextField
