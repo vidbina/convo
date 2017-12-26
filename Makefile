@@ -11,8 +11,11 @@ reown:
 	${SUDO} ${CHOWN} ${USER}: -R .
 
 shell:
-	${DOCKER_COMPOSE} run -u `id -u`:`id -g` web bash
-
+	${DOCKER_COMPOSE} run \
+		-e BUNDLE_APP_CONFIG=/tmp/bundle \
+		-e BUNDLE_BIN=/tmp/bundle/bin \
+		-e BUNDLE_PATH=/tmp/bundle \
+		-u `id -u`:`id -g` web bash
 server:
 	${DOCKER_COMPOSE} run web
 
