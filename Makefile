@@ -11,7 +11,7 @@ reown:
 	${SUDO} ${CHOWN} ${USER}: -R .
 
 shell:
-	${DOCKER_COMPOSE} run web bash
+	${DOCKER_COMPOSE} run -u `id -u`:`id -g` web bash
 
 server:
 	${DOCKER_COMPOSE} run web
